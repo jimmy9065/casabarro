@@ -14,6 +14,8 @@ const Base = styled.div`
     display: flex;
     justify-content: space-between;
     margin-top: 37px;
+
+    z-index: 9999;
 `;
 
 const IconContainer = styled.div``;
