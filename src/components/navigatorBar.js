@@ -4,6 +4,8 @@ import { useLocation, Link } from "react-router-dom";
 
 import Logo from "../svgs/logo";
 
+import LanguageSelector from "./languageSelector";
+
 const Base = styled.div`
     position: absolute;
     top: 0px;
@@ -35,27 +37,6 @@ const LinkFont = styled.div`
     &:hover {
         text-decoration: underline;
     }
-`;
-
-const LangSelector = styled.div`
-    color: ${(props) => props.color};
-`;
-
-const Language = styled.button`
-    font-family: "GT Pressura Mono";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 27px;
-    text-transform: lowercase;
-    display: inline;
-
-    color: inherit;
-    border: none;
-    background: none;
-    cursor: pointer;
-
-    text-decoration: ${(props) => (props.selected ? "underline" : "none")};
 `;
 
 const LinkOptions = [
@@ -99,21 +80,11 @@ let NavigatorBar = (props) => {
                     );
                 })}
             </LinkContainer>
-            <LangSelector color={color}>
-                <Language
-                    selected={language === "kr"}
-                    onClick={() => selectLanguage("kr")}
-                >
-                    kr
-                </Language>
-                \
-                <Language
-                    selected={language === "en"}
-                    onClick={() => selectLanguage("en")}
-                >
-                    en
-                </Language>
-            </LangSelector>
+            <LanguageSelector
+                color={color}
+                language={language}
+                selectLanguage={selectLanguage}
+            />
         </Base>
     );
 };

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { PageBase, Grid } from "../components/common";
+import LanguageSelector from "../components/languageSelector";
 import { LandingLogo1, LandingLogo2 } from "../svgs/landing_logos";
 
 const VIDEO_URL =
@@ -80,7 +81,7 @@ const LogoTextRight = styled.div`
     margin: auto;
 `;
 
-const ClickableModel = styled.div`
+const ClickableModal = styled.div`
     position: absolute;
     top: 0;
     left: 0;
@@ -89,7 +90,7 @@ const ClickableModel = styled.div`
 `;
 
 const OceanLoop = (props) => {
-    let { stage, setStage } = props;
+    let { stage, setStage, language, selectLanguage } = props;
     return (
         <OceanLoopBase>
             <Video autoPlay muted loop>
@@ -120,7 +121,14 @@ const OceanLoop = (props) => {
                     )
                 )}
             </LogoBase>
-            {stage == 1 && <ClickableModel onClick={()=>{setStage(2)}}/>}
+            {
+            stage == 1
+            && <ClickableModal onClick={()=>{setStage(2)}}>
+                <div style={{position:"absolute", right:40, bottom:50}}>
+                    <LanguageSelector language={language} selectLanguage={selectLanguage} color="#FFF3E1"/>
+                </div>
+            </ClickableModal>
+            }
         </OceanLoopBase>
     );
 };
@@ -133,13 +141,14 @@ const Home = () => {
     );
 };
 
-let LandingPage = () => {
+let LandingPage = (props) => {
+    let {language, selectLanguage} = props
     const [stage, setStage] = useState(0);
 
     return (
         <PageBase>
             {(stage == 0 || stage == 1) && (
-                <OceanLoop stage={stage} setStage={setStage} />
+                <OceanLoop stage={stage} setStage={setStage} language={language} selectLanguage={selectLanguage}/>
             )}
             <Home />
         </PageBase>

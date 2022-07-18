@@ -26,7 +26,7 @@ function App() {
         <BrowserRouter>
             <NavigatorBar language={language} selectLanguage={selectLanguage} />
             <Routes>
-                <Route exact path="/" element={<LandingPage />} />
+                <Route exact path="/" element={<LandingPage language={language} selectLanguage={selectLanguage}/>} />
                 <Route exact path="vision" element={<VisionPage />} />
                 <Route exact path="residence" element={<ResidencePage />} />
                 <Route exact path="amenities" element={<AmenitiesPage />} />
