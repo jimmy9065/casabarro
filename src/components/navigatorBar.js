@@ -5,11 +5,14 @@ import { useLocation, Link } from "react-router-dom";
 import Logo from "../svgs/logo";
 
 const Base = styled.div`
+    position: fixed;
+    margin-left: 3%;
+    margin-right: 2%;
+    width: 95%;
+    height: 30px;
     display: flex;
     justify-content: space-between;
-    margin-top: 37px;
-    margin-left: 61px;
-    margin-right: 40px;
+    margin-top: 3.5%;
 `;
 
 const IconContainer = styled.div``;
@@ -31,7 +34,26 @@ const LinkFont = styled.div`
     }
 `;
 
-const LangSelector = styled.div``;
+const LangSelector = styled.div`
+    color: ${(props) => props.color};
+`;
+
+const Language = styled.button`
+    font-family: "GT Pressura Mono";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 27px;
+    text-transform: lowercase;
+    display: inline;
+
+    color: inherit;
+    border: none;
+    background: none;
+    cursor: pointer;
+
+    text-decoration: ${(props) => (props.selected ? "underline" : "none")};
+`;
 
 const LinkOptions = [
     "vision",
@@ -42,13 +64,15 @@ const LinkOptions = [
     "contact",
 ];
 
-let NavigatorBar = () => {
+let NavigatorBar = (props) => {
+    let { language, selectLanguage } = props;
     let location = useLocation();
-    let color = location.pathname == "/" ? "#833316" : "#000000";
+    let color = location.pathname == "/" ? "#833316" : "#FFF3E1";
 
     let selectedLinkStyle = { textDecoration: "underline" };
-    let normalLinkStyle = { textDecoration: "none"};
+    let normalLinkStyle = { textDecoration: "none" };
 
+    console.log("lan:", language);
     return (
         <Base>
             <IconContainer>
@@ -58,18 +82,12 @@ let NavigatorBar = () => {
             </IconContainer>
             <LinkContainer>
                 {LinkOptions.map((link) => {
-                    console.log(
-                        "current link:",
-                        link,
-                        "match?",
-                        location.pathname == link
-                    );
                     return (
                         <Link
                             key={link}
                             to={link}
                             style={
-                                location.pathname == "/"+link
+                                location.pathname == "/" + link
                                     ? selectedLinkStyle
                                     : normalLinkStyle
                             }
@@ -79,8 +97,20 @@ let NavigatorBar = () => {
                     );
                 })}
             </LinkContainer>
-            <LangSelector>
-                <div>En/Kr</div>
+            <LangSelector color={color}>
+                <Language
+                    selected={language === "kr"}
+                    onClick={() => selectLanguage("kr")}
+                >
+                    kr
+                </Language>
+                \
+                <Language
+                    selected={language === "en"}
+                    onClick={() => selectLanguage("en")}
+                >
+                    en
+                </Language>
             </LangSelector>
         </Base>
     );

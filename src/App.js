@@ -9,11 +9,22 @@ import CollaborationPage from "./pages/collaboration";
 import ContactPage from "./pages/contact";
 
 import NavigatorBar from "./components/navigatorBar";
+import { useState } from "react";
 
 function App() {
+    const [language, setLanguage] = useState("en");
+
+    let selectLanguage = (language) => {
+        if (language == "en" || language == "kr") {
+            setLanguage(language);
+        }
+    };
+
+    console.log("from app lan:", language);
+
     return (
         <BrowserRouter>
-            <NavigatorBar />
+            <NavigatorBar language={language} selectLanguage={selectLanguage} />
             <Routes>
                 <Route exact path="/" element={<LandingPage />} />
                 <Route exact path="vision" element={<VisionPage />} />
