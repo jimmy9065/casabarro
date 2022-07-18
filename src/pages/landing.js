@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { PageBase, Grid } from "../components/common";
 import LanguageSelector from "../components/languageSelector";
 import { LandingLogo1, LandingLogo2 } from "../svgs/landing_logos";
@@ -9,6 +9,32 @@ const VIDEO_URL =
 const Image_URL =
     "https://casa-barro-public.s3.ap-northeast-2.amazonaws.com/landing/landing.jpg";
 
+const fadeIn = keyframes`
+  0%{
+    opacity: 0;
+  }
+  50%{
+    opacity: 0.5;
+  }
+  100%{
+    opacity: 1;
+  }
+`
+
+const fadeOut = keyframes`
+  0%{
+    opacity: 1;
+  }
+  50%{
+    opacity: 0.5;
+  }
+  100%{
+    opacity: 0;
+    display: none;
+    visibility: hidden;
+  }
+`
+
 const OceanLoopBase = styled.div`
     position: absolute;
     width: 100vw;
@@ -17,25 +43,18 @@ const OceanLoopBase = styled.div`
     font-size: 0px;
 
     z-index: 10000;
+
+    animation: ${props=>(props.show?"none":fadeOut)};
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
 `;
 
 const Video = styled.video`
     width: 100%;
     height: 100%;
     object-fit: cover;
-`;
-
-const Image = styled.img`
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-`;
-
-const HomeBase = styled.div`
-    width: 100vw;
-    height: 100vh;
-    margin-left: -16px;
-    font-size: 0px;
 `;
 
 const LogoBase = styled(Grid)`
@@ -65,6 +84,10 @@ const LogoTextLeft = styled.div`
 
     grid-column: 3/5;
     margin: auto;
+
+    animation: ${fadeIn} 1s linear;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
 `;
 
 const LogoTextRight = styled.div`
@@ -79,20 +102,48 @@ const LogoTextRight = styled.div`
 
     grid-column: 9/12;
     margin: auto;
+
+    animation: ${fadeIn} 1s linear;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
 `;
 
-const ClickableModal = styled.div`
+const ClickableModal = styled(Grid)`
     position: absolute;
     top: 0;
     left: 0;
+    width: calc(100vw - 32px);
+    height: 100vh;
+`;
+
+const LangSelectorContainer = styled.div`
+    grid-column: -2/-1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 81px;
+    margin: 0 auto;
+`
+
+const Image = styled.img`
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+`;
+
+const HomeBase = styled.div`
     width: 100vw;
     height: 100vh;
+    margin-left: -16px;
+    font-size: 0px;
 `;
 
 const OceanLoop = (props) => {
     let { stage, setStage, language, selectLanguage } = props;
+
     return (
-        <OceanLoopBase>
+        <OceanLoopBase show={stage<2}>
             <Video autoPlay muted loop>
                 <source src={VIDEO_URL} type="video/mp4"></source>
             </Video>
@@ -124,9 +175,9 @@ const OceanLoop = (props) => {
             {
             stage == 1
             && <ClickableModal onClick={()=>{setStage(2)}}>
-                <div style={{position:"absolute", right:40, bottom:50}}>
+                <LangSelectorContainer>
                     <LanguageSelector language={language} selectLanguage={selectLanguage} color="#FFF3E1"/>
-                </div>
+                </LangSelectorContainer>
             </ClickableModal>
             }
         </OceanLoopBase>
@@ -147,10 +198,8 @@ let LandingPage = (props) => {
 
     return (
         <PageBase>
-            {(stage == 0 || stage == 1) && (
-                <OceanLoop stage={stage} setStage={setStage} language={language} selectLanguage={selectLanguage}/>
-            )}
-            <Home />
+            <OceanLoop stage={stage} setStage={setStage} language={language} selectLanguage={selectLanguage}/>
+            {stage > 0 && <Home/>}
         </PageBase>
     );
 };
