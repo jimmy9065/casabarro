@@ -5,14 +5,15 @@ import { useLocation, Link } from "react-router-dom";
 import Logo from "../svgs/logo";
 
 const Base = styled.div`
-    position: fixed;
+    position: absolute;
+    top: 0px;
     margin-left: 3%;
     margin-right: 2%;
     width: 95%;
     height: 30px;
     display: flex;
     justify-content: space-between;
-    margin-top: 3.5%;
+    margin-top: 37px;
 `;
 
 const IconContainer = styled.div``;
@@ -72,7 +73,6 @@ let NavigatorBar = (props) => {
     let selectedLinkStyle = { textDecoration: "underline" };
     let normalLinkStyle = { textDecoration: "none" };
 
-    console.log("lan:", language);
     return (
         <Base>
             <IconContainer>
