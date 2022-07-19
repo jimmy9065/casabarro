@@ -1,10 +1,22 @@
 import React from "react";
 import styled from "styled-components";
 
-import { PageBase, Grid } from "../components/common";
+import { Grid } from "../components/common";
+import ContentRow1 from "../components/vision/ContentRow1";
+import ContentRow2 from "../components/vision/ContentRow2";
+import ContentRow3 from "../components/vision/ContentRow3";
+import ContentRow4 from "../components/vision/ContentRow4";
+import ContentRow5 from "../components/vision/ContentRow5";
 
-const COVER_URL = 
-"https://casa-barro-public.s3.ap-northeast-2.amazonaws.com/vision/cover.jpg"
+const IMAGE_URL4 = "https://casa-barro-public.s3.ap-northeast-2.amazonaws.com/vision/image4.jpg"
+
+const COVER_URL =
+    "https://casa-barro-public.s3.ap-northeast-2.amazonaws.com/vision/cover.jpg";
+
+const PageContainer = styled.div`
+    position: relative;
+    width: 100%;
+`;
 
 const Image = styled.img`
     object-fit: cover;
@@ -13,20 +25,25 @@ const Image = styled.img`
 `;
 
 const ImageBase = styled.div`
+    position: relative;
     width: 100vw;
     height: 100vh;
-    margin-left: -16px;
     font-size: 0px;
 `;
 
 let VisionPage = () => {
     return (
-        <PageBase>
+        <PageContainer>
             <ImageBase>
-                <Image src={COVER_URL}/>
+                <Image src={COVER_URL} />
             </ImageBase>
-        </PageBase>
-    )
-}
+            <ContentRow1 />
+            <ContentRow2 />
+            <ContentRow3 />
+            <ContentRow4 />
+            <ContentRow5 />
+        </PageContainer>
+    );
+};
 
-export default VisionPage
+export default VisionPage;
