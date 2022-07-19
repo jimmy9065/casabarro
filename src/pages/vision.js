@@ -1,14 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 
-import { Grid } from "../components/common";
 import ContentRow1 from "../components/vision/ContentRow1";
 import ContentRow2 from "../components/vision/ContentRow2";
 import ContentRow3 from "../components/vision/ContentRow3";
 import ContentRow4 from "../components/vision/ContentRow4";
 import ContentRow5 from "../components/vision/ContentRow5";
 
-const IMAGE_URL4 = "https://casa-barro-public.s3.ap-northeast-2.amazonaws.com/vision/image4.jpg"
+import Footer from "../components/footer";
 
 const COVER_URL =
     "https://casa-barro-public.s3.ap-northeast-2.amazonaws.com/vision/cover.jpg";
@@ -16,6 +15,7 @@ const COVER_URL =
 const PageContainer = styled.div`
     position: relative;
     width: 100%;
+    padding-bottom: 200px;
 `;
 
 const Image = styled.img`
@@ -42,6 +42,7 @@ let VisionPage = () => {
             <ContentRow3 />
             <ContentRow4 />
             <ContentRow5 />
+            <Footer />
         </PageContainer>
     );
 };

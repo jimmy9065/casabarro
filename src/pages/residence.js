@@ -1,10 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 
-import { PageBase, Grid } from "../components/common";
+import { Grid } from "../components/common";
+import Footer from "../components/footer";
 
 const COVER_URL = 
 "https://casa-barro-public.s3.ap-northeast-2.amazonaws.com/residence/cover.jpg"
+
+const PageContainer = styled.div`
+    position: relative;
+    width: 100%;
+    padding-bottom: 200px;
+`;
 
 const Image = styled.img`
     object-fit: cover;
@@ -21,11 +28,12 @@ const ImageBase = styled.div`
 
 let ResidencePage = () => {
     return (
-        <PageBase>
+        <PageContainer>
             <ImageBase>
                 <Image src={COVER_URL}/>
             </ImageBase>
-        </PageBase>
+            <Footer />
+        </PageContainer>
     )
 }
 
