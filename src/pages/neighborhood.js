@@ -4,8 +4,10 @@ import styled from "styled-components";
 import { Grid } from "../components/common";
 import Footer from "../components/footer";
 import { NEIGHBORHOOD_COVER } from "../constants/remote_files";
+import TitleTextBlock from "../components/TitleTextBlock";
 
 const COVER_URL = NEIGHBORHOOD_COVER
+const TITLE_TEXT = "Casa Barro is located in Hamori, the center of Daejung District."
 
 const PageContainer = styled.div`
     position: relative;
@@ -32,6 +34,7 @@ let NeighborhoodPage = () => {
             <ImageBase>
                 <Image src={COVER_URL}/>
             </ImageBase>
+            <TitleTextBlock text={TITLE_TEXT}/>
             <Footer />
         </PageContainer>
     )

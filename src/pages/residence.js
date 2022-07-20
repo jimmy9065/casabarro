@@ -4,8 +4,10 @@ import styled from "styled-components";
 import { Grid } from "../components/common";
 import Footer from "../components/footer";
 import { RESIDENCE_COVER } from "../constants/remote_files";
+import TitleTextBlock from "../components/TitleTextBlock";
 
 const COVER_URL = RESIDENCE_COVER
+const TITLE_TEXT = "Island life reimagined with the elegance and convenience of hotel living."
 
 const PageContainer = styled.div`
     position: relative;
@@ -32,6 +34,7 @@ let ResidencePage = () => {
             <ImageBase>
                 <Image src={COVER_URL}/>
             </ImageBase>
+            <TitleTextBlock text={TITLE_TEXT}/>
             <Footer />
         </PageContainer>
     )
