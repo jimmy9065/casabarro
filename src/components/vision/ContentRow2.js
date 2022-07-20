@@ -3,8 +3,9 @@ import styled from "styled-components";
 
 import { Grid } from "../common";
 
-const IMAGE_URL =
-    "https://casa-barro-public.s3.ap-northeast-2.amazonaws.com/vision/image1.jpg";
+import {VISION_IMG_1} from "../../constants/remote_files"
+
+const IMAGE_URL = VISION_IMG_1
 const HASH_TAGS = [
     "#Island Life",
     "#Outdoor Life",

@@ -4,10 +4,10 @@ import { PageBase, Grid } from "../components/common";
 import LanguageSelector from "../components/languageSelector";
 import { LandingLogo1, LandingLogo2 } from "../svgs/landing_logos";
 
-const VIDEO_URL =
-    "https://casa-barro-public.s3.ap-northeast-2.amazonaws.com/resized_1080/landing.mp4";
-const Image_URL =
-    "https://casa-barro-public.s3.ap-northeast-2.amazonaws.com/landing/landing.jpg";
+import { LANDING_IMG_1, LANDING_VID_1 } from "../constants/remote_files";
+
+const VIDEO_URL = LANDING_VID_1;
+const Image_URL = LANDING_IMG_1;
 
 const fadeIn = keyframes`
   0%{
@@ -19,7 +19,7 @@ const fadeIn = keyframes`
   100%{
     opacity: 1;
   }
-`
+`;
 
 const fadeOut = keyframes`
   0%{
@@ -33,7 +33,7 @@ const fadeOut = keyframes`
     display: none;
     visibility: hidden;
   }
-`
+`;
 
 const OceanLoopBase = styled.div`
     position: absolute;
@@ -44,7 +44,7 @@ const OceanLoopBase = styled.div`
 
     z-index: 10000;
 
-    animation: ${props=>(props.show?"none":fadeOut)};
+    animation: ${(props) => (props.show ? "none" : fadeOut)};
     animation-duration: 1s;
     animation-timing-function: linear;
     animation-iteration-count: 1;
@@ -124,7 +124,7 @@ const LangSelectorContainer = styled.div`
     justify-content: flex-end;
     padding-bottom: 81px;
     margin: 0 auto;
-`
+`;
 
 const Image = styled.img`
     object-fit: cover;
@@ -143,12 +143,12 @@ const OceanLoop = (props) => {
     let { stage, setStage, language, selectLanguage } = props;
 
     return (
-        <OceanLoopBase show={stage<2}>
+        <OceanLoopBase show={stage < 2}>
             <Video autoPlay muted loop>
                 <source src={VIDEO_URL} type="video/mp4"></source>
             </Video>
             <LogoBase>
-                {stage == 0 ? (
+                {stage === 0 ? (
                     <LogoButton
                         onClick={() => {
                             setStage(1);
@@ -157,7 +157,7 @@ const OceanLoop = (props) => {
                         <LandingLogo1 />
                     </LogoButton>
                 ) : (
-                    stage == 1 && (
+                    stage === 1 && (
                         <React.Fragment>
                             <LogoTextLeft>Hamori, Jeju Island</LogoTextLeft>
                             <LogoButton>
@@ -172,14 +172,21 @@ const OceanLoop = (props) => {
                     )
                 )}
             </LogoBase>
-            {
-            stage == 1
-            && <ClickableModal onClick={()=>{setStage(2)}}>
-                <LangSelectorContainer>
-                    <LanguageSelector language={language} selectLanguage={selectLanguage} color="#FFF3E1"/>
-                </LangSelectorContainer>
-            </ClickableModal>
-            }
+            {stage === 1 && (
+                <ClickableModal
+                    onClick={() => {
+                        setStage(2);
+                    }}
+                >
+                    <LangSelectorContainer>
+                        <LanguageSelector
+                            language={language}
+                            selectLanguage={selectLanguage}
+                            color="#FFF3E1"
+                        />
+                    </LangSelectorContainer>
+                </ClickableModal>
+            )}
         </OceanLoopBase>
     );
 };
@@ -193,13 +200,18 @@ const Home = () => {
 };
 
 let LandingPage = (props) => {
-    let {language, selectLanguage} = props
+    let { language, selectLanguage } = props;
     const [stage, setStage] = useState(0);
 
     return (
         <PageBase>
-            <OceanLoop stage={stage} setStage={setStage} language={language} selectLanguage={selectLanguage}/>
-            {stage > 0 && <Home/>}
+            <OceanLoop
+                stage={stage}
+                setStage={setStage}
+                language={language}
+                selectLanguage={selectLanguage}
+            />
+            {stage > 0 && <Home />}
         </PageBase>
     );
 };

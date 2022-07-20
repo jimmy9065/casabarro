@@ -32,7 +32,7 @@ const LinksContainer = styled.div`
 let NavigatorBar = (props) => {
     let { language, selectLanguage } = props;
     let location = useLocation();
-    let color = location.pathname == "/" ? "#833316" : "#FFF3E1";
+    let color = location.pathname === "/" ? "#833316" : "#FFF3E1";
 
     return (
         <Base>

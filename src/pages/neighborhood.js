@@ -3,9 +3,9 @@ import styled from "styled-components";
 
 import { Grid } from "../components/common";
 import Footer from "../components/footer";
+import { NEIGHBORHOOD_COVER } from "../constants/remote_files";
 
-const COVER_URL = 
-"https://casa-barro-public.s3.ap-northeast-2.amazonaws.com/neighborhood/cover.jpg"
+const COVER_URL = NEIGHBORHOOD_COVER
 
 const PageContainer = styled.div`
     position: relative;

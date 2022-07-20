@@ -2,8 +2,9 @@ import React from "react";
 import styled from "styled-components";
 
 import { Grid } from "../common";
+import { VISION_IMG_4 } from "../../constants/remote_files"
 
-const IMAGE_URL = "https://casa-barro-public.s3.ap-northeast-2.amazonaws.com/vision/image4.jpg"
+const IMAGE_URL = VISION_IMG_4
 
 const RowBase = styled(Grid)`
     margin-top: 100px;

@@ -42,7 +42,7 @@ let PageLinkes = (props) => {
                         key={link}
                         to={"/" + link}
                         style={
-                            location.pathname == "/" + link
+                            location.pathname === "/" + link
                                 ? selectedLinkStyle
                                 : normalLinkStyle
                         }
