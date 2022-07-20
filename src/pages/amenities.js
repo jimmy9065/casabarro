@@ -24,7 +24,6 @@ const Image = styled.img`
 const ImageBase = styled.div`
     width: 100vw;
     height: 100vh;
-    margin-left: -16px;
     font-size: 0px;
 `;
 

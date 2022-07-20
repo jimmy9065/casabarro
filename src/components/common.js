@@ -6,11 +6,12 @@ const Grid = styled.div`
     grid-column-gap: 16px;
     margin-left: 16px;
     margin-right: 16px;
-`
+`;
 
 const PageBase = styled(Grid)`
     position: relative;
     height: 100%;
-`
+`;
 
-export {PageBase, Grid}
+
+export { PageBase, Grid };
