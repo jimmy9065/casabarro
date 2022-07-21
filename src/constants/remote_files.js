@@ -3,7 +3,8 @@ const BASEURL = "https://casa-barro-public.s3.ap-northeast-2.amazonaws.com/"
 // landing
 const LANDING_FOLDER = "landing/"
 const LANDING_IMG_1 = BASEURL + LANDING_FOLDER + "landing.jpg"
-const LANDING_VID_1 = BASEURL + LANDING_FOLDER + "landing.mp4"
+// const LANDING_VID_1 = BASEURL + LANDING_FOLDER + "landing.mp4"
+const LANDING_VID_1 = BASEURL + LANDING_FOLDER + "landing_new.mp4"
 
 // vision
 const VISION_FOLDER = "vision/"
