@@ -4,9 +4,9 @@ import styled from "styled-components";
 import { Grid } from "./common";
 
 const RowBase = styled(Grid)`
+    position: relative;
     margin-top: ${(props) => props.marginTop}px;
     margin-bottom: ${(props) => props.marginBottom}px;
-    position: relative;
 `;
 
 const ImageContainer = styled.div`
