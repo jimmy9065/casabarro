@@ -1,6 +1,4 @@
 import React from "react";
-import styled from "styled-components";
-
 import TextBlock from "../TitleContentTextBlocker";
 
 const TextBlock1 = () => {
@@ -24,18 +22,5 @@ const TextBlock2 = () => {
         />
     );
 };
-
-
-const Paragraph = styled.p`
-    font-family: "Manrope";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 28px;
-    /* or 156% */
-    margin: 0 0;
-
-    color: #857D7A;
-`;
 
 export { TextBlock1, TextBlock2 };

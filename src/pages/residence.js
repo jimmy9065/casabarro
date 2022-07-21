@@ -5,7 +5,7 @@ import Footer from "../components/footer";
 import { RESIDENCE_COVER } from "../constants/remote_files";
 import TitleTextBlock from "../components/TitleTextBlock";
 import ImageRow from "../components/ImageRow";
-import { TextBlock1, TextBlock2, TextBlock3} from "../components/residence/textblocks"
+import { TextBlock1, TextBlock2} from "../components/residence/textblocks"
 import FlowPlanBlock from "../components/residence/flowPlanBlock";
 import { 
     RESIDENCE_IMG_1, RESIDENCE_IMG_2, RESIDENCE_IMG_3,
