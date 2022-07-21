@@ -7,6 +7,10 @@ import TitleTextBlock from "../components/TitleTextBlock";
 import ImageRow from "../components/ImageRow";
 import { TextBlock1, TextBlock2, TextBlock3} from "../components/residence/textblocks"
 import FlowPlanBlock from "../components/residence/flowPlanBlock";
+import { 
+    RESIDENCE_IMG_1, RESIDENCE_IMG_2, RESIDENCE_IMG_3,
+    RESIDENCE_IMG_4, RESIDENCE_IMG_5, RESIDENCE_IMG_6,
+} from "../constants/remote_files";
 
 const COVER_URL = RESIDENCE_COVER;
 const TITLE_TEXT =
@@ -14,39 +18,39 @@ const TITLE_TEXT =
 
 const images = [
     {
-        src: "https://casa-barro-public.s3.ap-northeast-2.amazonaws.com/residence/image1.jpg",
+        src: RESIDENCE_IMG_1,
         posStart: 3,
         posEnd: 11,
         caption: "casa barro: facade",
     },
     {
-        src: "https://casa-barro-public.s3.ap-northeast-2.amazonaws.com/residence/image2.jpg",
+        src: RESIDENCE_IMG_2,
         posStart: 3,
         posEnd: 11,
         caption: "casa barro: facade",
     },
     {
-        src: "https://casa-barro-public.s3.ap-northeast-2.amazonaws.com/residence/image3.jpg",
+        src: RESIDENCE_IMG_3,
         posStart: 2,
         posEnd: 12,
         caption: "casa barro: facade",
     },
     {
-        src: "https://casa-barro-public.s3.ap-northeast-2.amazonaws.com/residence/image4.jpg",
+        src: RESIDENCE_IMG_4,
         posStart: 2,
         posEnd: 7,
         marginBottom: 20,
         rightChild: (<TextBlock1/>)
     },
     {
-        src: "https://casa-barro-public.s3.ap-northeast-2.amazonaws.com/residence/image5.jpg",
+        src: RESIDENCE_IMG_5,
         posStart: 2,
         posEnd: 7,
         caption: "casa barro: facade",
         marginTop: 20,
     },
     {
-        src: "https://casa-barro-public.s3.ap-northeast-2.amazonaws.com/residence/image6.jpg",
+        src: RESIDENCE_IMG_6,
         posStart: 7,
         posEnd: 12,
         caption: "casa barro: facade",
