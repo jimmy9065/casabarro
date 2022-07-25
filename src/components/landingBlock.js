@@ -104,9 +104,7 @@ const Image = styled.img`
 
 const LandingBlock = (props) => {
     let { onClick, stage } = props;
-    useEffect(() => {
-        console.log("stage changed in landingBlock:", stage);
-    }, stage);
+    
     return (
         <Container onClick={onClick}>
             <LeftContainer stage={stage}>
