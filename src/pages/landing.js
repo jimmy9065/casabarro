@@ -65,8 +65,6 @@ const LogoBase = styled(Grid)`
     top: 50%;
     right: 50%;
     transform: translate(50%, -50%);
-
-    border: 1px solid black;
 `;
 
 const LogoTextLeft = styled.div`
