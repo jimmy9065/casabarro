@@ -15,6 +15,7 @@ const LinkFont = styled.div`
     color: ${(props) => props.color};
     &:hover {
         text-decoration: underline;
+        text-decoration-color: ${(props) => props.color};
     }
 `;
 
@@ -31,7 +32,10 @@ let PageLinkes = (props) => {
     let { color } = props;
 
     let location = useLocation();
-    let selectedLinkStyle = { textDecoration: "underline" };
+    let selectedLinkStyle = { 
+        textDecoration: "underline",
+        textDecorationColor: color,
+    };
     let normalLinkStyle = { textDecoration: "none" };
 
     return (
