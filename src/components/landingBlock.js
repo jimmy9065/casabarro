@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 
-// import backslash from "../svgs/backslash.svg";
-import backslash_short from "../svgs/backslash_short.svg";
+import backslash from "../svgs/backslash.svg";
 import logoLeftText from "../svgs/logoLeftText.svg";
 import logoRightText from "../svgs/logoRightText.svg";
 
@@ -80,11 +79,18 @@ const MiddleContainer = styled.div`
     width: 38px;
     height: 60px;
 
+    overflow: hidden;
+
     animation: ${(props) => (props.stage > 0 ? MiddleKeyFrames : "none")} 1s
         linear;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 `;
+
+const ImageWrapper = styled.div`
+    width: 38px;
+    height: 60px;
+`
 
 const Image = styled.img`
     object-fit: contain;
@@ -103,7 +109,9 @@ const LandingBlock = (props) => {
                 <Image src={logoLeftText} />
             </LeftContainer>
             <MiddleContainer stage={stage}>
-                <Image src={backslash_short} />
+                <ImageWrapper>
+                    <Image src={backslash} />
+                </ImageWrapper>
             </MiddleContainer>
             <RightContainer stage={stage}>
                 <Image src={logoRightText} />

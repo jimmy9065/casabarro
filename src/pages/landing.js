@@ -160,9 +160,7 @@ const OceanLoop = (props) => {
             {stage === 1 && (
                 <ClickableModal
                     onClick={() => {
-                        setStage(2);
-                        // debug
-                        // setStage(0);
+                        setStage(0);
                     }}
                 >
                     <LangSelectorContainer>
