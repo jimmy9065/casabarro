@@ -3,6 +3,7 @@ import styled, { keyframes } from "styled-components";
 import { PageBase, Grid } from "../components/common";
 import LanguageSelector from "../components/languageSelector";
 import { LandingLogo1, LandingLogo2 } from "../svgs/landing_logos";
+import LandingBlock from "../components/landingBlock"
 
 import { LANDING_IMG_1, LANDING_VID_1 } from "../constants/remote_files";
 
@@ -39,7 +40,7 @@ const OceanLoopBase = styled.div`
     position: absolute;
     width: 100vw;
     height: 100vh;
-    margin-left: -16px;
+    left: -16px;
     font-size: 0px;
 
     z-index: 10000;
@@ -58,19 +59,14 @@ const Video = styled.video`
 `;
 
 const LogoBase = styled(Grid)`
-    width: 100%;
+    width: calc(100% + 32px);
+    height: 320px;
     position: absolute;
     top: 50%;
     right: 50%;
     transform: translate(50%, -50%);
-`;
 
-const LogoButton = styled.button`
-    border: none;
-    background: none;
-    cursor: pointer;
-
-    grid-column: 6/8;
+    border: 1px solid black;
 `;
 
 const LogoTextLeft = styled.div`
@@ -148,34 +144,25 @@ const OceanLoop = (props) => {
                 <source src={VIDEO_URL} type="video/mp4"></source>
             </Video>
             <LogoBase>
-                {stage === 0 ? (
-                    <LogoButton
-                        onClick={() => {
-                            setStage(1);
-                        }}
-                    >
-                        <LandingLogo1 />
-                    </LogoButton>
-                ) : (
-                    stage === 1 && (
-                        <React.Fragment>
-                            <LogoTextLeft>Hamori, Jeju Island</LogoTextLeft>
-                            <LogoButton>
-                                <LandingLogo2 />
-                            </LogoButton>
-                            <LogoTextRight>
-                                Exclusive Jeju residence bringing together ocean
-                                view, architecture and design with the
-                                convenience of the city.
-                            </LogoTextRight>
-                        </React.Fragment>
-                    )
-                )}
+                {stage === 1 && <LogoTextLeft>Hamori, Jeju Island</LogoTextLeft>}
+                <LandingBlock
+                    stage={stage}
+                    onClick={() => {
+                        setStage(1);
+                    }}
+                />
+                {stage === 1 && <LogoTextRight>
+                    Exclusive Jeju residence bringing together ocean
+                    view, architecture and design with the
+                    convenience of the city.
+                </LogoTextRight>}
             </LogoBase>
             {stage === 1 && (
                 <ClickableModal
                     onClick={() => {
                         setStage(2);
+                        // debug
+                        // setStage(0);
                     }}
                 >
                     <LangSelectorContainer>
