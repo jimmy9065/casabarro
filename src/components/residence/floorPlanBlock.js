@@ -1,7 +1,12 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useEffect, useState } from "react";
+import styled, { keyframes } from "styled-components";
 
 import { Grid, Divider } from "../common";
+import {
+    RESIDENCE_FLOOR_0,
+    RESIDENCE_FLOOR_1,
+    RESIDENCE_BUILDING,
+} from "../../constants/remote_files";
 
 const FlowPlanContainer = styled(Grid)`
     position: relative;
@@ -16,17 +21,64 @@ const ImageContainer = styled.div`
     grid-column: ${(props) => props.start + "/" + props.end};
 
     margin: auto 0;
-
 `;
 
 const Image = styled.img`
     width: 100%;
 `;
 
-const FloorPlanImage = () => {
+const FloorPlanImage1 = styled(Image)`
+    opacity: 1;
+    animation: ${props=>(props.init?"none":props.selected?FadeIn:FadeOut)} 1s ease;
+    animation-fill-mode: forwards;
+`
+
+const FadeOut = keyframes`
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+`
+
+const FadeIn = keyframes`
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+`
+
+
+const FloorPlanImage = styled(Image)`
+    position: absolute;
+    left: 0px;
+    opacity: 0;
+    animation: ${props=>(props.init?"none":props.selected?FadeIn:FadeOut)} 1s ease;
+    animation-fill-mode: forwards;
+`
+
+const FloorPlanImageBlock = (props) => {
+    let { floorIdx } = props;
+
+    useEffect(() => {
+
+    })
+
     return (
         <ImageContainer start={6} end={12}>
-            <Image src="https://casa-barro-public.s3.ap-northeast-2.amazonaws.com/residence/image7.jpg" />
+            <FloorPlanImage1
+                init={floorIdx == 0}
+                selected={floorIdx == 1}
+                src={RESIDENCE_FLOOR_0}
+            />
+            <FloorPlanImage
+                init={floorIdx == 0}
+                selected={floorIdx == 2}
+                src={RESIDENCE_FLOOR_1}
+            />
         </ImageContainer>
     );
 };
@@ -53,7 +105,7 @@ const FloorLinkContainer = styled.div`
 
     min-width: 200px;
     max-width: 250px;
-`
+`;
 
 const FloorLink = styled.p`
     font-family: "Manrope";
@@ -69,12 +121,12 @@ const FloorLink = styled.p`
     :hover {
         cursor: pointer;
     }
-`
+`;
 
 const FloormapInfoContainer = styled.div`
     position: absolute;
-    top: 120px;;
-`
+    top: 120px; ;
+`;
 
 const FloorInfo37F = () => {
     return (
@@ -86,18 +138,31 @@ const FloorInfo37F = () => {
             <Paragraph>Room B 3.8 x 3.3</Paragraph>
             <Paragraph>Room C 3.3 x 3.2</Paragraph>
         </FloormapInfoContainer>
-    )
-}
+    );
+};
 
-const TextBlock = () => {
+const FloorPlanSelector = (props) => {
+    let { selectFloor } = props;
     return (
         <TextBlockContainer>
             <FloorLinkContainer>
-                <FloorLink>FLOOR PLAN: 3F–7F</FloorLink>
-                <Divider/>
-                <FloorLink>FLOOR PLAN: 8F</FloorLink>
+                <FloorLink
+                    onClick={() => {
+                        selectFloor(1);
+                    }}
+                >
+                    FLOOR PLAN: 3F–7F
+                </FloorLink>
+                <Divider />
+                <FloorLink
+                    onClick={() => {
+                        selectFloor(2);
+                    }}
+                >
+                    FLOOR PLAN: 8F
+                </FloorLink>
             </FloorLinkContainer>
-            <FloorInfo37F/>
+            <FloorInfo37F />
         </TextBlockContainer>
     );
 };
@@ -113,7 +178,7 @@ const BuildingImageContainer = styled.div`
 const BuildingImage = () => {
     return (
         <BuildingImageContainer start={2} end={3}>
-            <Image src="https://casa-barro-public.s3.ap-northeast-2.amazonaws.com/residence/image8.jpg" />
+            <Image src={RESIDENCE_BUILDING} />
         </BuildingImageContainer>
     );
 };
@@ -137,10 +202,9 @@ const DownloadLink = styled.a`
     text-decoration-line: underline;
 
     color: #857d7a;
-
 `;
 
-const DownloadLinks = () => {
+const DownloadLinks = (props) => {
     return (
         <DownloadLinksContainer>
             <div>
@@ -154,12 +218,14 @@ const DownloadLinks = () => {
 };
 
 const FloorPlanBlock = () => {
+    let [floorIdx, setFloorIdx] = useState(0);
+    // state = 0 for init state, then it starts from 1 to n
     return (
         <FlowPlanContainer>
-            <TextBlock />
+            <FloorPlanSelector selectFloor={setFloorIdx} />
             <BuildingImage />
             <DownloadLinks />
-            <FloorPlanImage />
+            <FloorPlanImageBlock floorIdx={floorIdx} />
         </FlowPlanContainer>
     );
 };
