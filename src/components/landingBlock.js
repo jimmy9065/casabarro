@@ -36,6 +36,10 @@ const Container = styled.div`
     margin-bottom: auto;
 
     display: flex;
+
+    :hover {
+        cursor: pointer;
+    }
 `;
 
 const LeftContainer = styled.div`
