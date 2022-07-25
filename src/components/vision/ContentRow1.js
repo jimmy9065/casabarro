@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-import { Grid } from "../common";
-import BackSlach from "../../svgs/backslash";
+import { Grid, ContainImage } from "../common";
+import backslash_dark from "../../svgs/backslash_dark.svg";
 
 const RowBase = styled(Grid)`
     margin-top:100px;
@@ -48,7 +48,7 @@ const ContentRow1 = () => {
     return (
         <RowBase>
             <IconContainer>
-                <BackSlach />
+                <ContainImage src={backslash_dark} />
             </IconContainer>
             <TextContainer1>
                 <p style={{ margin: 0 }}>casa Barro —</p>

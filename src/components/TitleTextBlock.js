@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import BackSlach from "../svgs/backslash";
-import { Grid } from "./common";
+import { Grid, ContainImage } from "./common";
+import backslash_dark from "../svgs/backslash_dark.svg";
 
 const BlockContainer = styled(Grid)`
     margin-top: 50px;
@@ -37,7 +37,7 @@ const TitleTextBlock = (props) => {
     return (
         <BlockContainer>
             <IconContainer>
-                <BackSlach />
+                <ContainImage src={backslash_dark}/>
             </IconContainer>
             <TextContainer1>
                 {text}

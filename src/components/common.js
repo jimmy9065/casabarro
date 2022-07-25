@@ -13,5 +13,10 @@ const PageBase = styled(Grid)`
     height: 100%;
 `;
 
+const ContainImage = styled.img`
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+`;
 
-export { PageBase, Grid };
+export { PageBase, Grid, ContainImage };
