@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { Grid } from "../common";
+import { Grid, Divider } from "../common";
 
 const FlowPlanContainer = styled(Grid)`
     position: relative;
@@ -50,9 +50,12 @@ const Paragraph = styled.p`
 const FloorLinkContainer = styled.div`
     display: flex;
     flex-direction: column;
+
+    min-width: 200px;
+    max-width: 250px;
 `
 
-const FloorLink = styled.a`
+const FloorLink = styled.p`
     font-family: "Manrope";
     font-style: normal;
     font-weight: 400;
@@ -62,6 +65,10 @@ const FloorLink = styled.a`
     margin: 0 0;
 
     color: #857d7a;
+
+    :hover {
+        cursor: pointer;
+    }
 `
 
 const FloormapInfoContainer = styled.div`
@@ -87,6 +94,7 @@ const TextBlock = () => {
         <TextBlockContainer>
             <FloorLinkContainer>
                 <FloorLink>FLOOR PLAN: 3F–7F</FloorLink>
+                <Divider/>
                 <FloorLink>FLOOR PLAN: 8F</FloorLink>
             </FloorLinkContainer>
             <FloorInfo37F/>
@@ -114,6 +122,8 @@ const DownloadLinksContainer = styled.div`
     position: absolute;
     bottom: 10px;
     grid-column: 2/4;
+
+    min-width: 200px;
 `;
 
 const DownloadLink = styled.a`
@@ -127,6 +137,7 @@ const DownloadLink = styled.a`
     text-decoration-line: underline;
 
     color: #857d7a;
+
 `;
 
 const DownloadLinks = () => {

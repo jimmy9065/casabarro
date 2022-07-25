@@ -19,4 +19,24 @@ const ContainImage = styled.img`
     height: 100%;
 `;
 
-export { PageBase, Grid, ContainImage };
+const DividerContainer = styled.div`
+    width: 100%;
+    padding: ${props=>(props.padding)}px 0px;
+`
+
+const DividerLine = styled.hr`
+    margin: 0px 0px;
+`
+
+const Divider = (props) => {
+    let { spacing } = props
+    if (spacing == undefined) {spacing = 0}
+
+    return (
+        <DividerContainer padding={spacing/2}>
+            <DividerLine/>
+        </DividerContainer>
+    )
+}
+
+export { PageBase, Grid, ContainImage, Divider };
