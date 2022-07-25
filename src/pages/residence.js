@@ -6,7 +6,7 @@ import { RESIDENCE_COVER } from "../constants/remote_files";
 import TitleTextBlock from "../components/TitleTextBlock";
 import ImageRow from "../components/ImageRow";
 import { TextBlock1, TextBlock2} from "../components/residence/textblocks"
-import FlowPlanBlock from "../components/residence/flowPlanBlock";
+import FloorPlanBlock from "../components/residence/floorPlanBlock";
 import { 
     RESIDENCE_IMG_1, RESIDENCE_IMG_2, RESIDENCE_IMG_3,
     RESIDENCE_IMG_4, RESIDENCE_IMG_5, RESIDENCE_IMG_6,
@@ -96,7 +96,7 @@ let ResidencePage = () => {
                     rightChild={image.rightChild}
                 />
             ))}
-            <FlowPlanBlock/>
+            <FloorPlanBlock/>
             <Footer />
         </PageContainer>
     );
